@@ -1,0 +1,11 @@
+.homePageCard{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(20, 20, 20);
+    padding: 10px;
+}
+.homePageCardIcon{
+    padding: 20px;
+    font-size: 20px;
+}
