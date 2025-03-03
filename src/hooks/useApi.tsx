@@ -22,6 +22,7 @@ import PotentialFakeResponse from '../types/PotentialFakeResponse';
 import MyCharactersResponse from '../types/MyCharactersResponse';
 import CreateCharacterRequest from '../types/CreateCharacterRequest';
 import CreateCharacterInfoResponse from '../types/CreateCharacterInfoResponse';
+import { t } from 'i18next';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL
@@ -45,7 +46,7 @@ api.interceptors.response.use(
   },
   (error) => {
     if (!error?.response)
-      return Promise.reject('Sem conexão com o servidor.');
+      return Promise.reject(t('noConnectionToTheServer'));
 
     if (error.response.status === 400)
       return Promise.reject(error.response.data.errors.join('<br/>'));
@@ -53,13 +54,13 @@ api.interceptors.response.use(
     if (error.response.status === 403) {
       localStorage.clear();
       document.location.reload();
-      return Promise.reject('Você não possui autorização.');
+      return Promise.reject(t('youDontHaveAuthorization'));
     }
 
     if (error.response.status === 401) {
       localStorage.clear();
       document.location.reload();
-      return Promise.reject('Você não está autenticado.');
+      return Promise.reject(t('youAreNotConnected'));
     }
 
     return Promise.reject(`${error.response.status} - ${error.response.statusText}`);

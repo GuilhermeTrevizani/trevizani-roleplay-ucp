@@ -101,7 +101,7 @@ const SalesPage = () => {
       <>
         {wrongItems.length > 0 && <>
           <Alert
-            message='Vendas com problema'
+            message={t('salesWithProblem')}
             description={wrongItems.map(x => {
               return (
                 <><span>{x.userOrigin}</span><br /></>

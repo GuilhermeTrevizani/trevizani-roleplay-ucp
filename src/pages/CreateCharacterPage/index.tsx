@@ -85,7 +85,7 @@ const CreateCharacterPage = () => {
       <>
         <Space direction='vertical' size='middle' style={{ display: 'flex' }}>
           {response.rejectionReason && <Alert type='error' message={stringFormat(t('rejectionMessage'), response.staffer, response.rejectionReason)} />}
-          {!response.rejectionReason && response.name && <Alert type='error' message={stringFormat('Você está aplicando uma mudança de nome em {0}. Tudo será resetado exceto saldo da conta bancária, itens, veículos, propriedades e empresas.', response.name)} />}
+          {!response.rejectionReason && response.name && <Alert type='error' message={stringFormat(t('namechangeTip'), response.name)} />}
           <Alert type='warning' message={<span dangerouslySetInnerHTML={{ __html: t('featuresTip') }} />} />
           <Form layout='vertical'>
             <Row gutter={16}>

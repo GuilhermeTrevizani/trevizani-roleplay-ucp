@@ -96,205 +96,191 @@ const PremiumPage = () => {
 
   const dataSource = [
     {
-      feature: 'Troca de Nome',
+      feature: t('nameChange'),
       normal: '0',
       bronze: '0',
       silver: '1',
       gold: '1',
     },
     {
-      feature: 'Troca de Número',
+      feature: t('numberChange'),
       normal: '0',
       bronze: '1',
       silver: '2',
       gold: '2',
     },
     {
-      feature: 'Troca de Placa',
+      feature: t('plateChange'),
       normal: '0',
       bronze: '1',
       silver: '2',
       gold: '2',
     },
     {
-      feature: 'Outfits',
+      feature: t('outfits'),
       normal: '10',
       bronze: '15',
       silver: '20',
       gold: '30',
     },
     {
-      feature: 'Mobílias Interior',
+      feature: t('interiorFurnitures'),
       normal: '100',
       bronze: '300',
       silver: '600',
       gold: '1000',
     },
     {
-      feature: 'Mobílias Exterior',
+      feature: t('exteriorFurnitures'),
       normal: '2',
       bronze: '4',
       silver: '6',
       gold: '10',
     },
     {
-      feature: 'Prioridade Avaliação Personagem',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
+      feature: t('characterAvaliationPriority'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
     {
-      feature: 'Cooldown de Anúncio',
-      normal: '30 minutos',
-      bronze: '20 minutos',
-      silver: '10 minutos',
-      gold: '5 minutos',
+      feature: t('announcementCooldown'),
+      normal: `30 ${t('minutes').toLowerCase()}`,
+      bronze: `20 ${t('minutes').toLowerCase()}`,
+      silver: `10 ${t('minutes').toLowerCase()}`,
+      gold: `5 ${t('minutes').toLowerCase()}`,
     },
     {
-      feature: 'Duração Infomarker',
-      normal: 'Até 3 dias',
-      bronze: 'Até 7 dias',
-      silver: 'Até 15 dias',
-      gold: 'Até 30 dias',
+      feature: t('infomarkerDuration'),
+      normal: `${t('until')} 3 ${t('days').toLowerCase()}`,
+      bronze: `${t('until')} 7 ${t('days').toLowerCase()}`,
+      silver: `${t('until')} 15 ${t('days').toLowerCase()}`,
+      gold: `${t('until')} 30 ${t('days').toLowerCase()}`,
     },
     {
-      feature: 'Quantidade Infomarker',
+      feature: t('infomarkerQuantity'),
       normal: '1',
       bronze: '3',
       silver: '5',
       gold: '10',
     },
     {
-      feature: 'Inatividade de Propriedades',
-      normal: '3 horas em 10 dias',
-      bronze: '3 horas em 10 dias',
-      silver: '3 horas em 20 dias',
-      gold: '3 horas em 30 dias',
+      feature: t('propertiesInactivity'),
+      normal: t('3HoursIn10Days'),
+      bronze: t('3HoursIn10Days'),
+      silver: t('3HoursIn20Days'),
+      gold: t('3HoursIn30Days'),
     },
     {
-      feature: 'Bloqueio de PM',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
+      feature: t('pmBlock'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
     {
-      feature: 'Imposto de Propriedades',
+      feature: t('propertiesTax'),
       normal: '0,15%',
       bronze: '0,13%',
       silver: '0,10%',
       gold: '0,08%',
     },
     {
-      feature: 'Imposto de Veículos',
+      feature: t('vehiclesTax'),
       normal: '0,10%',
       bronze: '0,07%',
       silver: '0,05%',
       gold: '0,03%',
     },
     {
-      feature: 'Veículos Exclusivos',
-      normal: 'Não',
+      feature: t('exclusiveVehicles'),
+      normal: t('no'),
       bronze: 'Seashark, Seashark3, TriBike, Havok, Double, Hakuchou2, Vindicator, Baller2, Locust, Komoda, Turismo2, Krieger, Nero2, Tyrant, Cinquemila, Buffalo4, Baller7, Mule5, Sanchez2, Blazer3',
       silver: 'Tropic2, Issi2, Windsor2, Tribike2, Akuma, Carbonrs, Yosemite2, Brawler, Everon, Nimbus, Comet5, Ninef2, Entity2, Prototipo, Emerus, Reever, Iwagen, Astron, Jubilee, Ignus, Patriot3',
       gold: 'Speeder, TriBik3, Supervolito2, Bf400, Dominator3, Dubsta3, Luxor2, Contender, Patriot2, Deveste, Elegy, Neon, Issi7, Pfister811, Banshee2, Shinobi, Reever, Comet7, Deity, Granger2, Zeno, Blazer2',
     },
-    // {
-    //   feature: 'Roupas Exclusivas',
-    //   normal: 'Não',
-    //   bronze: 'Não',
-    //   silver: 'Não',
-    //   gold: 'Sim',
-    // },
     {
-      feature: 'TV',
-      normal: 'Não',
-      bronze: 'Não',
-      silver: 'Não',
-      gold: 'Sim',
+      feature: t('tv'),
+      normal: t('no'),
+      bronze: t('no'),
+      silver: t('no'),
+      gold: t('yes'),
     },
     {
-      feature: 'Rádio Personalizada',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
+      feature: t('personalizedRadio'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
     {
-      feature: 'Rankbar Permanente Fórum/Discord',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
+      feature: t('discordAndForumPermanentRankbar'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
     {
-      feature: 'Clima no Interior de Propriedades',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
+      feature: t('weatherOnPropertyInterior'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
     {
-      feature: 'Hora no Interior de Propriedades',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
-    },
-    // {
-    //   feature: 'Flyer de Anúncio',
-    //   normal: 'Não',
-    //   bronze: 'Não',
-    //   silver: 'Sim',
-    //   gold: 'Sim',
-    // },
-    {
-      feature: 'Duração de Graffiti',
-      normal: '5 dias',
-      bronze: '7 dias',
-      silver: '14 dias',
-      gold: '21 dias',
+      feature: t('hourOnPropertyInterior'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
     {
-      feature: 'Quantidade de Graffiti',
+      feature: t('graffitiDuration'),
+      normal: `5 ${t('days').toLowerCase()}`,
+      bronze: `7 ${t('days').toLowerCase()}`,
+      silver: `14 ${t('days').toLowerCase()}`,
+      gold: `21 ${t('days').toLowerCase()}`,
+    },
+    {
+      feature: t('graffitiQuantity'),
       normal: '2',
       bronze: '3',
       silver: '4',
       gold: '5',
     },
     {
-      feature: 'Estilo de Caminhada',
-      normal: 'Não',
-      bronze: 'Sim',
-      silver: 'Sim',
-      gold: 'Sim',
+      feature: t('walkStyle'),
+      normal: t('no'),
+      bronze: t('yes'),
+      silver: t('yes'),
+      gold: t('yes'),
     },
   ];
 
   const columns = [
     {
-      title: 'Funcionalidade',
+      title: t('feature'),
       dataIndex: 'feature',
       key: 'feature',
     },
     {
-      title: 'Jogador Normal',
+      title: t('normalPlayer'),
       dataIndex: 'normal',
       key: 'normal',
     },
     {
-      title: 'Premium Bronze',
+      title: t('premiumBronze'),
       dataIndex: 'bronze',
       key: 'bronze',
     },
     {
-      title: 'Premium Prata',
+      title: t('premiumSilver'),
       dataIndex: 'silver',
       key: 'silver',
     },
     {
-      title: 'Premium Ouro',
+      title: t('premiumGold'),
       dataIndex: 'gold',
       key: 'gold',
     },
@@ -302,22 +288,22 @@ const PremiumPage = () => {
 
   if (responseStatusCode !== 0) {
     if (responseStatusCode === 1)
-      return <LayoutPage><Alert message={<>Você comprou com sucesso seu pacote de LS Points. Clique <a href='/premium'>aqui</a> para ser redirecionado.</>} type="success" /></LayoutPage>;
+      return <LayoutPage><Alert message={t('premiumPaymentSuccessMessage')} type="success" /></LayoutPage>;
 
     if (responseStatusCode === 2)
-      return <LayoutPage><Alert message={<>O pagamento do seu pacote de LS Points está pendente. Por favor, aguarde a confirmação. Clique <a href='/premium'>aqui</a> para ser redirecionado.</>} type="warning" /></LayoutPage>;
+      return <LayoutPage><Alert message={t('premiumPaymentPendingMessage')} type="warning" /></LayoutPage>;
 
     if (responseStatusCode === 3)
-      return <LayoutPage><Alert message={<>O pagamento do seu pacote de LS Points falhou. Se você acredita que isso seja um bug, por favor reporte. Clique <a href='/premium'>aqui</a> para ser redirecionado.</>} type="error" /></LayoutPage>;
+      return <LayoutPage><Alert message={t('premiumPaymentErrorMessage')} type="error" /></LayoutPage>;
   }
 
   if (!premium)
-    return <LayoutPage><>Carregando...</></LayoutPage>
+    return <LayoutPage><>{t('loading')}</></LayoutPage>
 
   const items: TabsProps['items'] = [
     {
-      key: 'Pacotes',
-      label: 'Pacotes',
+      key: t('packages'),
+      label: t('packages'),
       children: <>
         <Row gutter={16}>
           {premium.packages.map((premiumPackage) => {
@@ -338,15 +324,15 @@ const PremiumPage = () => {
       </>,
     },
     {
-      key: 'Níveis',
-      label: 'Níveis',
+      key: t('levels'),
+      label: t('levels'),
       children: <>
         <Table dataSource={dataSource} columns={columns} pagination={false} />
       </>,
     },
     {
-      key: 'Itens',
-      label: 'Itens',
+      key: t('items'),
+      label: t('items'),
       children: <>
         <Row gutter={16}>
           {premium.items.map((item) => {
@@ -354,7 +340,7 @@ const PremiumPage = () => {
               <Col xs={24} md={10} lg={6} style={{ marginBottom: 5 }}>
                 <Badge.Ribbon text={`${formatValue(item.value)} LS Points`} color="purple">
                   <Card title={item.name} style={{ marginBottom: '5px' }}>
-                    Use /premium no servidor para adquirir.
+                    {t('usePremiumTip')}
                   </Card>
                 </Badge.Ribbon>
               </Col>
@@ -376,7 +362,7 @@ const PremiumPage = () => {
             <Wallet initialization={{ preferenceId: premium.currentPurchasePreferenceId }}
               customization={{ valueProp: 'smart_option' }} />
           </div>}
-          <Button onClick={cancelPurchase} loading={loading} danger>Cancelar Compra</Button>
+          <Button onClick={cancelPurchase} loading={loading} danger>{t('cancelPurchase')}</Button>
         </>}
       </Space>
 
@@ -387,7 +373,7 @@ const PremiumPage = () => {
         <Form layout='vertical'>
           <Row gutter={16} style={{ marginBottom: '10px' }}>
             <Col span={24}>
-              <Alert message='Para comprar o pacote como presente para outro usuário, basta informar o nome do usuário do Discord abaixo. Caso o pacote for para você mesmo, informe seu nome de usuário.' type="warning" />
+              <Alert message={t('buyPremiumTip')} type="warning" />
             </Col>
           </Row>
           <Row gutter={16}>
