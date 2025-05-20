@@ -1,7 +1,7 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
-import StafferResponse from '../../types/StafferResponse';
+import Table, { type ColumnsType } from 'antd/es/table';
+import type StafferResponse from '../../types/StafferResponse';
 import Title from 'antd/es/typography/Title';
 import { useEffect, useState } from 'react';
 import { useApi } from '../../hooks/useApi';
@@ -9,7 +9,6 @@ import { useNotification } from '../../hooks/useNotification';
 import { formatDateTime, formatValue } from '../../services/format';
 import { Tag, Tooltip } from 'antd';
 import moment from 'moment';
-import 'moment/locale/pt-br';
 
 moment.locale('pt-br');
 

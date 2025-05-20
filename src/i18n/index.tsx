@@ -19,7 +19,7 @@ i18next
   .use(initReactI18next)
   .init({
     resources,
-    lng: process.env.REACT_APP_LANGUAGE
+    lng: import.meta.env.VITE_APP_LANGUAGE
   });
 
 export default i18next;

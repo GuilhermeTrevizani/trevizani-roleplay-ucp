@@ -13,7 +13,6 @@ import ParametersPage from '../pages/ParametersPage';
 import SalesPage from '../pages/SalesPage';
 import { StaffFlag } from '../types/StaffFlag';
 import FurnituresPage from '../pages/FurnituresPage';
-import { ReactElement } from 'react';
 import PropertiesPage from '../pages/PropertiesPage';
 import AnimationsPage from '../pages/AnimationsPage';
 import CrimesPage from '../pages/CrimesPage';
@@ -22,6 +21,7 @@ import ChatlogPage from '../pages/ChatlogPage';
 import PotentialFakesPage from '../pages/PotentialFakesPage';
 import MyCharactersPage from '../pages/MyCharactersPage';
 import CreateCharacterPage from '../pages/CreateCharacterPage';
+import type { ReactElement } from 'react';
 
 const RequireAuth = ({ children, staff, staffFlag }: { children: ReactElement, staff?: UserStaff, staffFlag?: StaffFlag }) => {
   const { user, loading } = useAuth();
@@ -77,8 +77,8 @@ const RoutesApp = () => {
       <Route path='/my-characters' element={<RequireAuth><MyCharactersPage /></RequireAuth>}></Route>
       <Route path='/create-character' element={<RequireAuth><CreateCharacterPage /></RequireAuth>}></Route>
       <Route path='/create-character/:id' element={<RequireAuth><CreateCharacterPage /></RequireAuth>}></Route>
-      </Routes>
-    );
+    </Routes>
+  );
 };
 
 export default RoutesApp;

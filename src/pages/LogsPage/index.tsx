@@ -3,11 +3,11 @@ import LayoutPage from '../LayoutPage';
 import { Button, Col, DatePicker, Form, Input, Row, Select, Space } from 'antd';
 import { useEffect, useState } from 'react';
 import { useApi } from '../../hooks/useApi';
-import SelectOptionResponse from '../../types/SelectOptionResponse';
-import LogResponse from '../../types/LogResponse';
-import Table, { ColumnsType } from 'antd/es/table';
+import type SelectOptionResponse from '../../types/SelectOptionResponse';
+import type LogResponse from '../../types/LogResponse';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { formatDateTime } from '../../services/format';
-import LogRequest from '../../types/LogRequest';
+import type LogRequest from '../../types/LogRequest';
 import Text from 'antd/es/typography/Text';
 import { useNotification } from '../../hooks/useNotification';
 

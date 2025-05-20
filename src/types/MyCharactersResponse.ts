@@ -1,6 +1,6 @@
 import { CharacterStatus } from './CharacterStatus';
 
-export default interface MyCharactersResponse {
+export interface MyCharactersResponse {
   createCharacterWarning?: string;
   characters: MyCharactersCharacterResponse[];
 }

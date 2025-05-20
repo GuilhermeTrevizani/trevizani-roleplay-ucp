@@ -1,10 +1,10 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { formatDateTime } from '../../services/format';
 import { useApi } from '../../hooks/useApi';
-import AdministrativePunishmentResponse from '../../types/AdministrativePunishmentResponse';
+import type AdministrativePunishmentResponse from '../../types/AdministrativePunishmentResponse';
 import { useNotification } from '../../hooks/useNotification';
 
 const MyPunishmentsPage = () => {

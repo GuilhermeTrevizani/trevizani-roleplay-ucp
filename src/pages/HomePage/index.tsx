@@ -1,9 +1,9 @@
 import LayoutPage from '../LayoutPage';
 import { t } from 'i18next';
-import { Col, Flex, Row, Statistic, StatisticProps } from 'antd';
+import { Col, Flex, Statistic, type StatisticProps } from 'antd';
 import CountUp from 'react-countup';
 import { useEffect, useState } from 'react';
-import DashboardResponse from '../../types/DashboardResponse';
+import type DashboardResponse from '../../types/DashboardResponse';
 import { useApi } from '../../hooks/useApi';
 import {
   CarOutlined,

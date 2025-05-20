@@ -2,11 +2,11 @@ import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
 import { Button, Col, Flex, Form, Input, Modal, Row, Space, Table } from 'antd';
 import { useEffect, useState } from 'react';
-import ApplicationListResponse from '../../types/ApplicationListResponse';
-import { ColumnsType } from 'antd/es/table';
+import type ApplicationListResponse from '../../types/ApplicationListResponse';
+import { type ColumnsType } from 'antd/es/table';
 import { useApi } from '../../hooks/useApi';
 import { formatDateTime } from '../../services/format';
-import ApplicationResponse from '../../types/ApplicationResponse';
+import type ApplicationResponse from '../../types/ApplicationResponse';
 import TextArea from 'antd/es/input/TextArea';
 import { useNotification } from '../../hooks/useNotification';
 

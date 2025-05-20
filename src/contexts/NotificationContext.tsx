@@ -1,5 +1,5 @@
 import { notification } from "antd";
-import { createContext, ReactElement } from "react";
+import { createContext, type ReactElement } from "react";
 
 type NotificationType = 'success' | 'error';
 

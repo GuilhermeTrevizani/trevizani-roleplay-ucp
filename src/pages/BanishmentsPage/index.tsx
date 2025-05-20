@@ -1,11 +1,11 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { formatDateTime } from '../../services/format';
 import { Button, Flex } from 'antd';
 import { useApi } from '../../hooks/useApi';
-import BanishmentResponse from '../../types/BanishmentResponse';
+import type BanishmentResponse from '../../types/BanishmentResponse';
 import useAuth from '../../hooks/useAuth';
 import { UserStaff } from '../../types/UserStaff';
 import { useNotification } from '../../hooks/useNotification';

@@ -1,10 +1,10 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { formatDateTime, formatMoney, removeAccents } from '../../services/format';
 import { useApi } from '../../hooks/useApi';
-import PremiumPointPurchaseResponse from '../../types/PremiumPointPurchaseResponse';
+import type PremiumPointPurchaseResponse from '../../types/PremiumPointPurchaseResponse';
 import { useNotification } from '../../hooks/useNotification';
 import { Alert, Col, Input, Row } from 'antd';
 

@@ -1,12 +1,12 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { removeAccents } from '../../services/format';
 import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
 import { Col, Input, Row, Tag } from 'antd';
-import PotentialFakeResponse from '../../types/PotentialFakeResponse';
+import type PotentialFakeResponse from '../../types/PotentialFakeResponse';
 
 const PotentialFakesPage = () => {
   const api = useApi();

@@ -1,12 +1,12 @@
-import { Button, Checkbox, Col, Flex, Form, Input, InputNumber, Popconfirm, Row, Select, Table, Tabs, TabsProps } from 'antd';
+import { Button, Checkbox, Col, Flex, Form, Input, InputNumber, Popconfirm, Row, Select, Table, Tabs, type TabsProps } from 'antd';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
-import { ColumnsType } from 'antd/es/table';
+import { type ColumnsType } from 'antd/es/table';
 import Title from 'antd/es/typography/Title';
 import { formatMoney, formatValue } from '../../services/format';
 import LayoutPage from '../LayoutPage';
-import SelectOptionResponse from '../../types/SelectOptionResponse';
-import ParametersRequest from '../../types/ParametersRequest';
+import type SelectOptionResponse from '../../types/SelectOptionResponse';
+import type ParametersRequest from '../../types/ParametersRequest';
 import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
 

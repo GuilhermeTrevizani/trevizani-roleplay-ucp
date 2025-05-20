@@ -37,7 +37,7 @@ const LoginPage = () => {
 
   const handleSubmit = async () => {
     setLoading(true);
-    document.location.href = process.env.REACT_APP_DISCORD_URL!;
+    document.location.href = import.meta.env.VITE_APP_DISCORD_URL!;
   };
 
   return <div className='bgLogin'>

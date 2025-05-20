@@ -1,12 +1,12 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { formatValue, removeAccents } from '../../services/format';
 import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
 import { Col, Input, Row } from 'antd';
-import CharacterPatrimonyResponse from '../../types/CharacterPatrimonyResponse';
+import type CharacterPatrimonyResponse from '../../types/CharacterPatrimonyResponse';
 
 const PatrimonyPage = () => {
   const api = useApi();

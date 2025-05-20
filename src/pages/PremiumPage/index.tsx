@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react';
 import LayoutPage from '../LayoutPage';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import { useApi } from '../../hooks/useApi';
-import { Alert, Badge, Button, Card, Col, Form, Input, Modal, Row, Space, Table, Tabs, TabsProps } from 'antd';
+import { Alert, Badge, Button, Card, Col, Form, Input, Modal, Row, Space, Table, Tabs, type TabsProps } from 'antd';
 import { t } from 'i18next';
 import { formatMoney, formatValue } from '../../services/format';
 import Title from 'antd/es/typography/Title';
 import { useLocation } from 'react-router-dom';
-import PremiumResponse, { PremiumPackage } from '../../types/PremiumResponse';
-import CreatePremiumRequest from '../../types/CreatePremiumRequest';
+import type { PremiumResponse, PremiumPackage } from '../../types/PremiumResponse';
+import type CreatePremiumRequest from '../../types/CreatePremiumRequest';
 import Text from 'antd/es/typography/Text';
 import { useNotification } from '../../hooks/useNotification';
 import useAuth from '../../hooks/useAuth';
 
-initMercadoPago(process.env.REACT_APP_MERCADO_PAGO_ACCESS_TOKEN!);
+initMercadoPago(import.meta.env.VITE_APP_MERCADO_PAGO_ACCESS_TOKEN!);
 
 const PremiumPage = () => {
   const api = useApi();

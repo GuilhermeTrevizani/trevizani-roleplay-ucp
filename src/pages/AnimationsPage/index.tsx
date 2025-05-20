@@ -1,12 +1,12 @@
 import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
-import Table, { ColumnsType } from 'antd/es/table';
+import Table, { type ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { removeAccents } from '../../services/format';
 import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
 import { Button, Checkbox, Col, Flex, Form, Input, InputNumber, Modal, Popconfirm, Row } from 'antd';
-import AnimationResponse from '../../types/AnimationResponse';
+import type AnimationResponse from '../../types/AnimationResponse';
 
 const AnimationsPage = () => {
   const api = useApi();

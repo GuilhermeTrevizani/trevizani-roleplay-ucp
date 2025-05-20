@@ -1,4 +1,4 @@
-export default interface PremiumResponse {
+export interface PremiumResponse {
   packages: PremiumPackage[];
   currentPurchaseName?: string;
   currentPurchasePreferenceId?: string;

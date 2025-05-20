@@ -1,31 +1,31 @@
 import axios from 'axios';
-import LoginResponse from '../types/LoginResponse';
-import ApplicationListResponse from '../types/ApplicationListResponse';
-import ApplicationResponse from '../types/ApplicationResponse';
-import BanishmentResponse from '../types/BanishmentResponse';
-import StafferResponse from '../types/StafferResponse';
-import SelectOptionResponse from '../types/SelectOptionResponse';
-import LogRequest from '../types/LogRequest';
-import AdministrativePunishmentResponse from '../types/AdministrativePunishmentResponse';
-import PremiumResponse from '../types/PremiumResponse';
-import CreatePremiumRequest from '../types/CreatePremiumRequest';
-import ParametersRequest from '../types/ParametersRequest';
-import DashboardResponse from '../types/DashboardResponse';
-import PremiumPointPurchaseResponse from '../types/PremiumPointPurchaseResponse';
-import UserMyInfoResponse from '../types/UserMyInfoResponse';
-import FurnitureResponse from '../types/FurnitureResponse';
-import PropertyResponse from '../types/PropertyResponse';
-import AnimationResponse from '../types/AnimationResponse';
-import CrimeResponse from '../types/CrimeResponse';
-import CharacterPatrimonyResponse from '../types/CharacterPatrimonyResponse';
-import PotentialFakeResponse from '../types/PotentialFakeResponse';
-import MyCharactersResponse from '../types/MyCharactersResponse';
-import CreateCharacterRequest from '../types/CreateCharacterRequest';
-import CreateCharacterInfoResponse from '../types/CreateCharacterInfoResponse';
+import type LoginResponse from '../types/LoginResponse';
+import type ApplicationListResponse from '../types/ApplicationListResponse';
+import type ApplicationResponse from '../types/ApplicationResponse';
+import type BanishmentResponse from '../types/BanishmentResponse';
+import type StafferResponse from '../types/StafferResponse';
+import type SelectOptionResponse from '../types/SelectOptionResponse';
+import type LogRequest from '../types/LogRequest';
+import type AdministrativePunishmentResponse from '../types/AdministrativePunishmentResponse';
+import type { PremiumResponse } from '../types/PremiumResponse';
+import type CreatePremiumRequest from '../types/CreatePremiumRequest';
+import type ParametersRequest from '../types/ParametersRequest';
+import type DashboardResponse from '../types/DashboardResponse';
+import type PremiumPointPurchaseResponse from '../types/PremiumPointPurchaseResponse';
+import type UserMyInfoResponse from '../types/UserMyInfoResponse';
+import type FurnitureResponse from '../types/FurnitureResponse';
+import type PropertyResponse from '../types/PropertyResponse';
+import type AnimationResponse from '../types/AnimationResponse';
+import type CrimeResponse from '../types/CrimeResponse';
+import type CharacterPatrimonyResponse from '../types/CharacterPatrimonyResponse';
+import type PotentialFakeResponse from '../types/PotentialFakeResponse';
+import type { MyCharactersResponse } from '../types/MyCharactersResponse';
+import type CreateCharacterRequest from '../types/CreateCharacterRequest';
+import type CreateCharacterInfoResponse from '../types/CreateCharacterInfoResponse';
 import { t } from 'i18next';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: import.meta.env.VITE_APP_API_URL
 });
 
 api.interceptors.request.use(

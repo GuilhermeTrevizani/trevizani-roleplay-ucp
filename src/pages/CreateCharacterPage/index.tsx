@@ -5,10 +5,10 @@ import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
 import { Alert, Button, Col, Form, Input, InputNumber, Row, Select, Space } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
-import CreateCharacterRequest from '../../types/CreateCharacterRequest';
+import type CreateCharacterRequest from '../../types/CreateCharacterRequest';
 import { CharacterSex } from '../../types/CharacterSex';
 import TextArea from 'antd/es/input/TextArea';
-import CreateCharacterInfoResponse from '../../types/CreateCharacterInfoResponse';
+import type CreateCharacterInfoResponse from '../../types/CreateCharacterInfoResponse';
 import { stringFormat } from '../../i18n';
 
 const CreateCharacterPage = () => {

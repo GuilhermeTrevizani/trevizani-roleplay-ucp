@@ -1,5 +1,5 @@
-import { createContext, ReactElement } from 'react';
-import LoginResponse from '../types/LoginResponse';
+import { createContext, type ReactElement } from 'react';
+import type LoginResponse from '../types/LoginResponse';
 import { useState, useEffect } from 'react';
 import { useApi } from '../hooks/useApi';
 import { UserStaff } from '../types/UserStaff';
