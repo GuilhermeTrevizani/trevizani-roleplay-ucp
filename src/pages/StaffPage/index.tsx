@@ -2,7 +2,6 @@ import { t } from 'i18next';
 import LayoutPage from '../LayoutPage';
 import Table, { type ColumnsType } from 'antd/es/table';
 import type StafferResponse from '../../types/StafferResponse';
-import Title from 'antd/es/typography/Title';
 import { useEffect, useState } from 'react';
 import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
@@ -84,15 +83,12 @@ const StaffPage = () => {
 
   return (
     <LayoutPage title={t('staff')}>
-      <>
-        <Title level={3}>{t('staff')}</Title>
-        <Table
-          columns={columns}
-          dataSource={staffers}
-          pagination={false}
-          loading={loading}
-        />
-      </>
+      <Table
+        columns={columns}
+        dataSource={staffers}
+        pagination={false}
+        loading={loading}
+      />
     </LayoutPage>
   );
 };

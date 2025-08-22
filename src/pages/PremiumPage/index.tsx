@@ -96,27 +96,6 @@ const PremiumPage = () => {
 
   const dataSource = [
     {
-      feature: t('nameChange'),
-      normal: '0',
-      bronze: '0',
-      silver: '1',
-      gold: '1',
-    },
-    {
-      feature: t('numberChange'),
-      normal: '0',
-      bronze: '1',
-      silver: '2',
-      gold: '2',
-    },
-    {
-      feature: t('plateChange'),
-      normal: '0',
-      bronze: '1',
-      silver: '2',
-      gold: '2',
-    },
-    {
       feature: t('outfits'),
       normal: '10',
       bronze: '15',
@@ -164,13 +143,6 @@ const PremiumPage = () => {
       bronze: '3',
       silver: '5',
       gold: '10',
-    },
-    {
-      feature: t('propertiesInactivity'),
-      normal: t('3HoursIn10Days'),
-      bronze: t('3HoursIn10Days'),
-      silver: t('3HoursIn20Days'),
-      gold: t('3HoursIn30Days'),
     },
     {
       feature: t('pmBlock'),
@@ -312,7 +284,7 @@ const PremiumPage = () => {
                 <Badge.Ribbon text={<>
                   {premiumPackage.value === premiumPackage.originalValue && formatMoney(premiumPackage.value)}
                   {premiumPackage.value !== premiumPackage.originalValue && <><Text delete>{formatMoney(premiumPackage.originalValue)}</Text> {formatMoney(premiumPackage.value)}</>}
-                </>} color="purple">
+                </>} color="blue">
                   <Card title={premiumPackage.name}>
                     <Button onClick={() => buyPackage(premiumPackage)}>{t('buy')}</Button>
                   </Card>
@@ -338,7 +310,7 @@ const PremiumPage = () => {
           {premium.items.map((item) => {
             return (
               <Col xs={24} md={10} lg={6} style={{ marginBottom: 5 }}>
-                <Badge.Ribbon text={`${formatValue(item.value)} LS Points`} color="purple">
+                <Badge.Ribbon text={`${formatValue(item.value)} Premium Points`} color="blue">
                   <Card title={item.name} style={{ marginBottom: '5px' }}>
                     {t('usePremiumTip')}
                   </Card>

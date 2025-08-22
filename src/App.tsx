@@ -10,7 +10,7 @@ function App() {
       <ConfigProvider
         theme={{
           algorithm: theme.darkAlgorithm,
-          token: { colorPrimary: '#8C3086' },
+          token: { colorPrimary: '#1097e6' },
         }}
       >
         <NotificationContextProvider>
@@ -21,7 +21,7 @@ function App() {
           </AuthProvider>
         </NotificationContextProvider>
       </ConfigProvider>
-    </div >
+    </div>
   );
 }
 

@@ -79,7 +79,7 @@ const HomePage = () => {
             <Statistic title={t('properties')} value={dashboard.properties} formatter={formatter} />
           </Col>
           <Col md={11} xs={20}>
-            <iframe style={{ width: '100%', height: '500px' }} src="https://discord.com/widget?id=1288265407098261554&theme=dark" allowTransparency={true}
+            <iframe style={{ width: '100%', height: '500px' }} src="https://discord.com/widget?id=1379120430106939542&theme=dark" allowTransparency={true}
               frameBorder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
           </Col>
           <Col md={11} xs={20}>

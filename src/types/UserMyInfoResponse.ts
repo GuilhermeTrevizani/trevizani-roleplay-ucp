@@ -5,4 +5,5 @@ export default interface UserMyInfoResponse {
   premiumPoints: number;
   staff: UserStaff;
   staffFlags: StaffFlag[];
+  notificationsUnread: number;
 };

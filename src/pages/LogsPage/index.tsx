@@ -77,9 +77,9 @@ const LogsPage = () => {
     {
       title: t('origin'),
       children: [{
-        title: t('name'),
-        dataIndex: 'originCharacterName',
-        key: 'originCharacterName',
+        title: t('character'),
+        dataIndex: 'originCharacter',
+        key: 'originCharacter',
       },
       {
         title: t('ip'),
@@ -90,14 +90,19 @@ const LogsPage = () => {
         title: t('socialClub'),
         dataIndex: 'originSocialClubName',
         key: 'originSocialClubName',
+      },
+      {
+        title: t('user'),
+        dataIndex: 'originUser',
+        key: 'originUser',
       }],
     },
     {
       title: t('target'),
       children: [{
-        title: t('name'),
-        dataIndex: 'targetCharacterName',
-        key: 'targetCharacterName',
+        title: t('character'),
+        dataIndex: 'targetCharacter',
+        key: 'targetCharacter',
       },
       {
         title: t('ip'),
@@ -108,6 +113,11 @@ const LogsPage = () => {
         title: t('socialClub'),
         dataIndex: 'targetSocialClubName',
         key: 'targetSocialClubName',
+      },
+      {
+        title: t('user'),
+        dataIndex: 'targetUser',
+        key: 'targetUser',
       }],
     },
   ];
@@ -197,6 +207,7 @@ const LogsPage = () => {
             dataSource={logs}
             pagination={false}
             loading={loading}
+            bordered
             locale={{ emptyText: t('noLogs') }}
             expandable={{
               expandedRowRender: (record) => <p style={{ margin: 0 }}>{record.description}</p>,

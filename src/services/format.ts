@@ -1,11 +1,11 @@
 import moment from 'moment';
 
 export const formatValue = (value: number, digits: number = 0) => {
-  return value.toLocaleString('pt-br', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+  return value.toLocaleString(import.meta.env.VITE_APP_LANGUAGE, { minimumFractionDigits: digits, maximumFractionDigits: digits });
 }
 
 export const formatMoney = (value: number) => {
-  return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+  return value.toLocaleString(import.meta.env.VITE_APP_LANGUAGE, { style: 'currency', currency: 'BRL' });
 }
 
 export const formatDateTime = (date: Date) => {

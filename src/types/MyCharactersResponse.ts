@@ -9,8 +9,6 @@ export interface MyCharactersCharacterResponse {
   id: string;
   name: string;
   lastAccessDate: Date;
-  canApplyNamechange: boolean;
-  canResendApplication: boolean;
   deathReason?: string;
   status: CharacterStatus;
 }

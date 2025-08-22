@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { formatDateTime } from '../../services/format';
 import { useApi } from '../../hooks/useApi';
 import { useNotification } from '../../hooks/useNotification';
-import { Button, Flex, Popconfirm, Row, Space, Tag } from 'antd';
+import { Button, Flex, Row, Space, Tag } from 'antd';
 import type { MyCharactersResponse, MyCharactersCharacterResponse } from '../../types/MyCharactersResponse';
 import { useNavigate } from 'react-router-dom';
 import { CharacterStatus } from '../../types/CharacterStatus';
@@ -46,20 +46,8 @@ const MyCharactersPage = () => {
     navigate('/create-character');
   }
 
-  const alterCharacter = (id: string) => {
-    navigate(`/create-character/${id}`);
-  }
-
-  const deleteCharacter = (id: string) => {
-    setLoading(true);
-    api.deleteCharacter(id)
-      .then(() => {
-        getMyCharacters();
-      })
-      .catch(res => {
-        notification.alert('error', res);
-        setLoading(false);
-      })
+  const view = (id: string) => {
+    navigate(`/character/${id}`);
   }
 
   const columns: ColumnsType<MyCharactersCharacterResponse> = [
@@ -100,17 +88,7 @@ const MyCharactersPage = () => {
       key: 'options',
       align: 'center',
       render: (_, record: MyCharactersCharacterResponse) => <Flex justify='space-evenly'>
-        {record.canResendApplication && <Button size='small' onClick={() => alterCharacter(record.id)}>{t('resendApplication')}</Button>}
-        {record.canApplyNamechange && <Button size='small' onClick={() => alterCharacter(record.id)}>{t('applyNamechange')}</Button>}
-        <Popconfirm
-          title={t('deleteCharacter')}
-          description={t('deleteCharacterConfirm')}
-          onConfirm={() => deleteCharacter(record.id)}
-          okText={t('yes')}
-          cancelText={t('no')}
-        >
-          <Button size='small' danger>{t('delete')}</Button>
-        </Popconfirm>
+        <Button size='small' onClick={() => view(record.id)}>{t('view')}</Button>
       </Flex>,
     },
   ];

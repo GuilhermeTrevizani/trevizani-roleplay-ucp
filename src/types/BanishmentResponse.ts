@@ -6,4 +6,5 @@ export default interface BanishmentResponse {
   character: string;
   user: string;
   userStaff: string;
+  onlyCharacterIsBanned: boolean;
 }

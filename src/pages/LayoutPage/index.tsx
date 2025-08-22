@@ -1,5 +1,5 @@
 import React, { type ReactElement, useEffect, useState } from 'react';
-import { Avatar, Button, Drawer, Dropdown, Layout, Menu } from 'antd';
+import { Avatar, Badge, Button, Drawer, Dropdown, Layout, Menu } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -25,7 +25,12 @@ import {
   PlayCircleOutlined,
   MoneyCollectOutlined,
   WechatOutlined,
-  WifiOutlined
+  WifiOutlined,
+  DeploymentUnitOutlined,
+  BarsOutlined,
+  DropboxOutlined,
+  SmileOutlined,
+  BellOutlined
 } from '@ant-design/icons';
 import { UserStaff } from '../../types/UserStaff';
 import './styles.css'
@@ -63,6 +68,7 @@ function LayoutPage({ children, title }: { children: ReactElement, title?: strin
   const api = useApi();
   const [premiumPoints, setPremiumPoints] = useState(0);
   const notification = useNotification();
+  const [notificationsUnread, setNotificationsUnread] = useState(0);
 
   useEffect(() => {
     api.getMyInfo()
@@ -70,6 +76,7 @@ function LayoutPage({ children, title }: { children: ReactElement, title?: strin
         setPremiumPoints(res.premiumPoints);
         localStorage.setItem('STAFF', res.staff.toString());
         localStorage.setItem('STAFF_FLAGS', JSON.stringify(res.staffFlags));
+        setNotificationsUnread(res.notificationsUnread);
       })
       .catch(res => {
         notification.alert('error', res);
@@ -93,29 +100,23 @@ function LayoutPage({ children, title }: { children: ReactElement, title?: strin
   ];
 
   const getPlayerRank = () => {
-    if (user?.staff === UserStaff.HeadServerDeveloper)
-      return 'Head Server Developer';
+    if (user?.staff === UserStaff.Founder)
+      return 'Founder';
 
-    if (user?.staff === UserStaff.ServerManager)
-      return 'Server Manager';
+    if (user?.staff === UserStaff.Management)
+      return t('management');
 
-    if (user?.staff === UserStaff.LeadServerAdmin)
-      return 'Lead Server Admin';
+    if (user?.staff === UserStaff.HeadAdmin)
+      return 'Head Admin';
 
-    if (user?.staff === UserStaff.SeniorServerAdmin)
-      return 'Senior Server Admin';
+    if (user?.staff === UserStaff.LeadAdmin)
+      return t('leadAdmin');
 
-    if (user?.staff === UserStaff.ServerAdminII)
-      return 'Server Admin II';
+    if (user?.staff === UserStaff.GameAdmin)
+      return t('gameAdmin');
 
-    if (user?.staff === UserStaff.ServerAdminI)
-      return 'Server Admin I';
-
-    if (user?.staff === UserStaff.JuniorServerAdmin)
-      return 'Junior Server Admin';
-
-    if (user?.staff === UserStaff.ServerSupport)
-      return 'Server Support';
+    if (user?.staff === UserStaff.Tester)
+      return t('tester');
 
     return 'Player';
   };
@@ -125,61 +126,117 @@ function LayoutPage({ children, title }: { children: ReactElement, title?: strin
     getItem('premium', t('premium'), <TrophyOutlined />),
     getItem('my-characters', t('myCharacters'), <UserOutlined />),
     getItem('my-punishments', t('myPunishments'), <MehOutlined />),
+    getItem('my-factions', t('myFactions'), <DeploymentUnitOutlined />),
     getItem('chatlog', t('chatlog'), <WechatOutlined />),
   ];
 
-  if ((user?.staff ?? UserStaff.None) >= UserStaff.ServerSupport) {
-    items.push(getItem('applications', t('applications'), <SolutionOutlined />));
-    items.push(getItem('banishments', t('banishments'), <DislikeOutlined />));
-    items.push(getItem('staff', t('staff'), <StarOutlined />));
-  }
-
-  if ((user?.staff ?? UserStaff.None) >= UserStaff.JuniorServerAdmin)
-    items.push(getItem('potential-fakes', t('potentialFakes'), <WifiOutlined />));
+  const flagsItems: MenuItem[] = [];
 
   if (user?.staffFlags.includes(StaffFlag.Furnitures))
-    items.push(getItem('furnitures', t('furnitures'), <FormatPainterOutlined />));
+    flagsItems.push(getItem('furnitures', t('furnitures'), <FormatPainterOutlined />));
 
   if (user?.staffFlags.includes(StaffFlag.Properties))
-    items.push(getItem('properties', t('properties'), <HomeOutlined />));
+    flagsItems.push(getItem('properties', t('properties'), <HomeOutlined />));
 
   if (user?.staffFlags.includes(StaffFlag.Animations))
-    items.push(getItem('animations', t('animations'), <PlayCircleOutlined />));
+    flagsItems.push(getItem('animations', t('animations'), <PlayCircleOutlined />));
 
-  if (user?.staffFlags.includes(StaffFlag.Factions))
-    items.push(getItem('crimes', t('crimes'), <AimOutlined />));
-
-  if ((user?.staff ?? UserStaff.None) >= UserStaff.LeadServerAdmin)
-    items.push(getItem('logs', t('logs'), <FileSearchOutlined />));
-
-  if ((user?.staff ?? UserStaff.None) >= UserStaff.ServerManager) {
-    items.push(getItem('patrimony', t('patrimony'), <MoneyCollectOutlined />));
-    items.push(getItem('parameters', t('parameters'), <ProfileOutlined />));
-    items.push(getItem('sales', t('sales'), <DollarOutlined />));
+  if (user?.staffFlags.includes(StaffFlag.Factions)) {
+    flagsItems.push(getItem('crimes', t('crimes'), <AimOutlined />));
+    flagsItems.push(getItem('factions', t('factions'), <BarsOutlined />));
   }
 
+  if (user?.staffFlags.includes(StaffFlag.Items))
+    flagsItems.push(getItem('items', t('items'), <DropboxOutlined />));
+
+  if (user?.staffFlags.includes(StaffFlag.Drugs))
+    flagsItems.push(getItem('drugs', t('drugs'), <SmileOutlined />));
+
+  if (flagsItems.length > 0)
+    items.push({
+      type: 'divider',
+    }, {
+      key: t('flags'),
+      label: t('flags'),
+      type: 'group',
+      children: flagsItems,
+    })
+
+  if ((user?.staff ?? UserStaff.None) >= UserStaff.Tester)
+    items.push({
+      type: 'divider',
+    }, {
+      key: t('tester'),
+      label: t('tester'),
+      type: 'group',
+      children: [
+        getItem('applications', t('applications'), <SolutionOutlined />),
+        getItem('banishments', t('banishments'), <DislikeOutlined />),
+        getItem('staff', t('staff'), <StarOutlined />),
+      ],
+    })
+
+  if ((user?.staff ?? UserStaff.None) >= UserStaff.GameAdmin)
+    items.push({
+      type: 'divider',
+    }, {
+      key: t('gameAdmin'),
+      label: t('gameAdmin'),
+      type: 'group',
+      children: [
+        getItem('potential-fakes', t('potentialFakes'), <WifiOutlined />),
+      ],
+    })
+
+  if ((user?.staff ?? UserStaff.None) >= UserStaff.LeadAdmin)
+    items.push({
+      type: 'divider',
+    }, {
+      key: t('leadAdmin'),
+      label: t('leadAdmin'),
+      type: 'group',
+      children: [
+        getItem('logs', t('logs'), <FileSearchOutlined />),
+      ],
+    })
+
+  if ((user?.staff ?? UserStaff.None) >= UserStaff.Management)
+    items.push({
+      type: 'divider',
+    }, {
+      key: t('management'),
+      label: t('management'),
+      type: 'group',
+      children: [
+        getItem('patrimony', t('patrimony'), <MoneyCollectOutlined />),
+        getItem('parameters', t('parameters'), <ProfileOutlined />),
+        getItem('sales', t('sales'), <DollarOutlined />),
+      ],
+    })
+
   const currentRoute = location.pathname.replace('/', '').split('/')[0];
-  const selectedItem = items.find(x => x?.key?.toString().startsWith(currentRoute) || x?.key == currentRoute)?.key?.toString() ?? '';
+
+  const extasRoutes: Record<string, string> = {
+    'create-character': 'my-characters',
+    'character': 'my-characters',
+    'faction': 'my-factions',
+  };
+
+  const selectedItem = extasRoutes[currentRoute] ?? currentRoute;
 
   return (
     <div className='layoutOver'>
       <div className='layoutTopImage' style={{ backgroundImage: 'url(' + bg + ')' }}>
         <img src={logo} alt="logo" className='layoutTopImageLogo' />
         <div className='layoutTopEnd'>
-          {/* <div className='layoutTopEndOptions'>
-            <div className='layoutTopEndOption'>
-              <QuestionOutlined />
+          <div className='layoutTopEndOptions'>
+            <div className='layoutTopEndOption' onClick={() => navigate('/notifications')} >
+              <BellOutlined /> <Badge color='red' count={notificationsUnread} size='small' />
             </div>
-            <div className='layoutTopEndOption'>
-              <SettingOutlined />
-            </div>
-            <div className='layoutTopEndOption'>
-              <NotificationOutlined />
-            </div>
-          </div> */}
-          <div>
+          </div>
+          <div style={{ backgroundColor: 'rgba(0,0,0,0.4)', padding: '10px', borderRadius: '10px' }}>
             <Dropdown menu={{ items: userMenuItems }} open={menuUserIsOpen}>
-              <div onClick={(e) => setMenuUserIsOpen(old => !old)} className='layoutTopEndUserMenu'>
+              <div onClick={() => setMenuUserIsOpen(old => !old)} className='layoutTopEndUserMenu'>
                 <Avatar size={48} src={user?.avatar} icon={<UserOutlined />} />
                 <div className='layoutTopEndUserMenuUserData'>
                   <span>
@@ -220,13 +277,16 @@ function LayoutPage({ children, title }: { children: ReactElement, title?: strin
           </Drawer>
           :
           <Sider trigger={null} collapsible theme='light' collapsed={collapsed}>
-            <Menu
-              mode="inline"
-              theme='light'
-              selectedKeys={[selectedItem]}
-              items={items}
-              onClick={onClick}
-            />
+            <div className='divMenu' style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <Menu
+                mode="inline"
+                theme='light'
+                selectedKeys={[selectedItem]}
+                items={items}
+                onClick={onClick}
+                style={{ overflow: 'auto' }}
+              />
+            </div>
           </Sider>
         }
         <Layout>
@@ -244,7 +304,7 @@ function LayoutPage({ children, title }: { children: ReactElement, title?: strin
             />
             <div className='layoutHeaderBar'>
               <span className='layoutTitle'>{title}</span>
-              <span className='layoutLsPointsText'><strong>{formatValue(premiumPoints)}</strong> LS Points</span>
+              <span className='layoutLsPointsText'><strong>{formatValue(premiumPoints)}</strong> Premium Points</span>
             </div>
           </Header>
           <Content style={{ padding: '0 50px' }}>

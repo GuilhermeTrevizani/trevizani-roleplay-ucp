@@ -8,7 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import type CreateCharacterRequest from '../../types/CreateCharacterRequest';
 import { CharacterSex } from '../../types/CharacterSex';
 import TextArea from 'antd/es/input/TextArea';
-import type CreateCharacterInfoResponse from '../../types/CreateCharacterInfoResponse';
+import type CharacterResponse from '../../types/CharacterResponse';
 import { stringFormat } from '../../i18n';
 
 const CreateCharacterPage = () => {
@@ -23,12 +23,7 @@ const CreateCharacterPage = () => {
     sex: CharacterSex.Man,
   })
   const navigate = useNavigate();
-  const [response, setResponse] = useState<CreateCharacterInfoResponse>({
-    age: 0,
-    history: '',
-    name: '',
-    sex: CharacterSex.Man,
-  });
+  const [response, setResponse] = useState<CharacterResponse>();
 
   useEffect(() => {
     getInfo();
@@ -39,7 +34,7 @@ const CreateCharacterPage = () => {
       return;
 
     setLoading(true);
-    api.getCreateCharacterInfo(id)
+    api.getCharacter(id)
       .then(res => {
         setResponse(res);
         if (res.rejectionReason)
@@ -84,8 +79,8 @@ const CreateCharacterPage = () => {
     <LayoutPage title={t('createCharacter')}>
       <>
         <Space direction='vertical' size='middle' style={{ display: 'flex' }}>
-          {response.rejectionReason && <Alert type='error' message={stringFormat(t('rejectionMessage'), response.staffer, response.rejectionReason)} />}
-          {!response.rejectionReason && response.name && <Alert type='error' message={stringFormat(t('namechangeTip'), response.name)} />}
+          {response && response.rejectionReason && <Alert type='error' message={stringFormat(t('rejectionMessage'), response.staffer, response.rejectionReason)} />}
+          {response && !response.rejectionReason && response.name && <Alert type='error' message={stringFormat(t('namechangeTip'), response.name)} />}
           <Alert type='warning' message={<span dangerouslySetInnerHTML={{ __html: t('featuresTip') }} />} />
           <Form layout='vertical'>
             <Row gutter={16}>

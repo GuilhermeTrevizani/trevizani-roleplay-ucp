@@ -21,8 +21,32 @@ import type CharacterPatrimonyResponse from '../types/CharacterPatrimonyResponse
 import type PotentialFakeResponse from '../types/PotentialFakeResponse';
 import type { MyCharactersResponse } from '../types/MyCharactersResponse';
 import type CreateCharacterRequest from '../types/CreateCharacterRequest';
-import type CreateCharacterInfoResponse from '../types/CreateCharacterInfoResponse';
+import type CharacterResponse from '../types/CharacterResponse';
 import { t } from 'i18next';
+import type CompanySafeMovementResponse from '../types/CompanySafeMovementResponse';
+import type { CharacterPropertyResponse, CharacterVehicleResponse } from '../types/CharacterResponse';
+import type MyFactionResponse from '../types/MyFactionResponse';
+import type MyFactionDetailResponse from '../types/MyFactionDetailResponse';
+import type SaveFactionRequest from '../types/SaveFactionRequest';
+import type SaveFactionVehicleRequest from '../types/SaveFactionVehicleRequest';
+import type SaveFactionRankRequest from '../types/SaveFactionRankRequest';
+import type SaveFactionMemberRequest from '../types/SaveFactionMemberRequest';
+import type OrderFactionRanksRequest from '../types/OrderFactionRanksRequest';
+import type FactionResponse from '../types/FactionResponse';
+import type FactionMemberResponse from '../types/FactionMemberResponse';
+import type FactionRank from '../types/FactionRank';
+import type FactionEquipmentResponse from '../types/FactionEquipmentResponse';
+import type FactionFrequencyResponse from '../types/FactionFrequencyResponse';
+import type FactionVehicle from '../types/FactionVehicle';
+import type FactionVehicleRequest from '../types/FactionVehicleRequest';
+import type FactionFrequencyRequest from '../types/FactionFrequencyRequest';
+import type FactionEquipmentRequest from '../types/FactionEquipmentRequest';
+import type FactionEquipmentItemResponse from '../types/FactionEquipmentItemResponse';
+import type FactionEquipmentItemRequest from '../types/FactionEquipmentItemRequest';
+import type DrugResponse from '../types/DrugResponse';
+import type ItemTemplateResponse from '../types/ItemTemplateResponse';
+import type ItemCategoryResponse from '../types/ItemCategoryResponse';
+import type NotificationResponse from '../types/NotificationResponse';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL
@@ -213,8 +237,164 @@ export const useApi = () => ({
     const response = await api.delete(`/characters/${id}`);
     return response.data;
   },
-  getCreateCharacterInfo: async (id: string) => {
-    const response = await api.get<CreateCharacterInfoResponse>(`/characters/create-character-info/${id}`);
+  getMyCharacter: async (id: string) => {
+    const response = await api.get<CharacterResponse>(`/characters/mine/${id}`);
+    return response.data;
+  },
+  getCompanySafeMovements: async (id: string) => {
+    const response = await api.get<CompanySafeMovementResponse[]>(`/companies/safe-movements/${id}`);
+    return response.data;
+  },
+  changeVehicleAccess: async (request: CharacterVehicleResponse) => {
+    const response = await api.post('/vehicles/change-access', request);
+    return response.data;
+  },
+  changePropertyAccess: async (request: CharacterPropertyResponse) => {
+    const response = await api.post('/properties/change-access', request);
+    return response.data;
+  },
+  getMyFactions: async () => {
+    const response = await api.get<MyFactionResponse[]>('/factions/mine');
+    return response.data;
+  },
+  getMyFaction: async (id: string) => {
+    const response = await api.get<MyFactionDetailResponse>(`/factions/mine/${id}`);
+    return response.data;
+  },
+  saveFaction: async (request: SaveFactionRequest) => {
+    const response = await api.post('/factions', request);
+    return response.data;
+  },
+  saveFactionVehicle: async (request: SaveFactionVehicleRequest) => {
+    const response = await api.post('/factions/save-vehicle', request);
+    return response.data;
+  },
+  saveFactionRank: async (request: SaveFactionRankRequest) => {
+    const response = await api.post('/factions/save-rank', request);
+    return response.data;
+  },
+  removeFactionRank: async (id: string) => {
+    const response = await api.delete(`/factions/remove-rank/${id}`);
+    return response.data;
+  },
+  saveFactionMember: async (request: SaveFactionMemberRequest) => {
+    const response = await api.post('/factions/save-member', request);
+    return response.data;
+  },
+  removeFactionMember: async (id: string) => {
+    const response = await api.delete(`/factions/remove-member/${id}`);
+    return response.data;
+  },
+  orderFactionRanks: async (request: OrderFactionRanksRequest) => {
+    const response = await api.post('/factions/order-ranks', request);
+    return response.data;
+  },
+  getFactions: async () => {
+    const response = await api.get<FactionResponse[]>('/factions');
+    return response.data;
+  },
+  getFactionTypes: async () => {
+    const response = await api.get<SelectOptionResponse[]>('/factions/types');
+    return response.data;
+  },
+  staffSaveFaction: async (request: FactionResponse) => {
+    const response = await api.post('/factions/staff-save', request);
+    return response.data;
+  },
+  getFactionMembers: async (id: string) => {
+    const response = await api.get<FactionMemberResponse[]>(`/factions/members/${id}`);
+    return response.data;
+  },
+  getFactionRanks: async (id: string) => {
+    const response = await api.get<FactionRank[]>(`/factions/ranks/${id}`);
+    return response.data;
+  },
+  getFactionVehicles: async (id: string) => {
+    const response = await api.get<FactionVehicle[]>(`/factions/vehicles/${id}`);
+    return response.data;
+  },
+  getFactionFrequencies: async (id: string) => {
+    const response = await api.get<FactionFrequencyResponse[]>(`/factions/frequencies/${id}`);
+    return response.data;
+  },
+  getFactionEquipments: async (id: string) => {
+    const response = await api.get<FactionEquipmentResponse[]>(`/factions/equipments/${id}`);
+    return response.data;
+  },
+  staffSaveFactionRank: async (request: FactionRank) => {
+    const response = await api.post('/factions/staff-save-rank', request);
+    return response.data;
+  },
+  staffRemoveFactionVehicle: async (id: string) => {
+    const response = await api.delete(`/factions/staff-remove-vehicle/${id}`);
+    return response.data;
+  },
+  staffRemoveFactionEquipment: async (id: string) => {
+    const response = await api.delete(`/factions/staff-remove-equipment/${id}`);
+    return response.data;
+  },
+  staffRemoveFactionEquipmentItem: async (id: string) => {
+    const response = await api.delete(`/factions/staff-remove-equipment-item/${id}`);
+    return response.data;
+  },
+  staffRemoveFactionFrequency: async (id: string) => {
+    const response = await api.delete(`/factions/staff-remove-frequency/${id}`);
+    return response.data;
+  },
+  getVehicleModels: async () => {
+    const response = await api.get<string[]>('/vehicles/models');
+    return response.data;
+  },
+  staffSaveFactionVehicle: async (request: FactionVehicleRequest) => {
+    const response = await api.post('/factions/staff-save-vehicle', request);
+    return response.data;
+  },
+  staffSaveFactionFrequency: async (request: FactionFrequencyRequest) => {
+    const response = await api.post('/factions/staff-save-frequency', request);
+    return response.data;
+  },
+  staffSaveFactionEquipment: async (request: FactionEquipmentRequest) => {
+    const response = await api.post('/factions/staff-save-equipment', request);
+    return response.data;
+  },
+  staffSaveFactionEquipmentItem: async (request: FactionEquipmentItemRequest) => {
+    const response = await api.post('/factions/staff-save-equipment-item', request);
+    return response.data;
+  },
+  getFactionEquipmentItems: async (id: string) => {
+    const response = await api.get<FactionEquipmentItemResponse[]>(`/factions/equipment-items/${id}`);
+    return response.data;
+  },
+  getItemsTemplatesOptions: async () => {
+    const response = await api.get<SelectOptionResponse[]>('/items-templates/options');
+    return response.data;
+  },
+  getDrugs: async () => {
+    const response = await api.get<DrugResponse[]>('/drugs');
+    return response.data;
+  },
+  saveDrug: async (request: DrugResponse) => {
+    const response = await api.post('/drugs', request);
+    return response.data;
+  },
+  getItemsTemplates: async () => {
+    const response = await api.get<ItemTemplateResponse[]>('/items-templates');
+    return response.data;
+  },
+  saveItemTemplate: async (request: ItemTemplateResponse) => {
+    const response = await api.post('/items-templates', request);
+    return response.data;
+  },
+  getItemsCategories: async () => {
+    const response = await api.get<ItemCategoryResponse[]>('/items-templates/categories');
+    return response.data;
+  },
+  getMyNotifications: async () => {
+    const response = await api.get<NotificationResponse[]>('/notifications/mine');
+    return response.data;
+  },
+  markNotificationAsRead: async (id: string) => {
+    const response = await api.post(`/notifications/mark-as-read/${id}`);
     return response.data;
   },
 });

@@ -3,10 +3,12 @@ export default interface LogResponse {
   type: string;
   date: Date;
   description: string;
-  originCharacterName: string;
+  originCharacter: string;
   originIp: string;
   originSocialClubName: string;
-  targetCharacterName: string;
+  originUser: string;
+  targetCharacter: string;
   targetIp: string;
   targetSocialClubName: string;
+  targetUser: string;
 }

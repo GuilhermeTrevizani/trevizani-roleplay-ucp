@@ -9,8 +9,6 @@ export default interface ParametersRequest {
   announcementValue: number;
   extraPaymentGarbagemanValue: number;
   blackout: boolean;
-  keyValue: number;
-  lockValue: number;
   ipLsJSON: string;
   fuelValue: number;
   tattooValue: number;
@@ -51,4 +49,7 @@ export default interface ParametersRequest {
   unemploymentAssistance: number;
   premiumPointPackagesJSON: string;
   motd: string;
+  entranceBenefitValue: number;
+  entranceBenefitCooldownUsers: number;
+  entranceBenefitCooldownHours: number;
 };

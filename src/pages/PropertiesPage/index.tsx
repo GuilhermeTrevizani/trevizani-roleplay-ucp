@@ -72,24 +72,6 @@ const PropertiesPage = () => {
       render: (value: number) => `$${formatValue(value)}`,
     },
     {
-      title: t('entrancePosition'),
-      dataIndex: 'entrancePosition',
-      key: 'entrancePosition',
-      render: (_, record: PropertyResponse) => `X: ${record.entrancePosX} | Y: ${record.entrancePosY} | Z: ${record.entrancePosZ}`,
-    },
-    {
-      title: t('dimension'),
-      dataIndex: 'entranceDimension',
-      key: 'entranceDimension',
-      render: (entranceDimension: number) => formatValue(entranceDimension),
-    },
-    {
-      title: t('exitPosition'),
-      dataIndex: 'exitPosition',
-      key: 'exitPosition',
-      render: (_, record: PropertyResponse) => `X: ${record.exitPosX} | Y: ${record.exitPosY} | Z: ${record.exitPosZ}`,
-    },
-    {
       title: t('owner'),
       dataIndex: 'owner',
       key: 'owner',

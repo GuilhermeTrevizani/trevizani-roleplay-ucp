@@ -69,14 +69,20 @@ const BanishmentsPage = () => {
       key: 'reason',
     },
     {
+      title: t('description'),
+      dataIndex: 'onlyCharacterIsBanned',
+      key: 'onlyCharacterIsBanned',
+      render: (onlyCharacterIsBanned: boolean) => t(onlyCharacterIsBanned ? 'onlyCharacterIsBanned' : 'allCharactersAreBanned'),
+    },
+    {
       title: t('options'),
       dataIndex: 'id',
       key: 'options',
       align: 'center',
-      hidden: !!user && user.staff < UserStaff.JuniorServerAdmin,
+      hidden: !!user && user.staff < UserStaff.GameAdmin,
       render: (id: string, record: BanishmentResponse) => <Flex justify='space-evenly'>
         <Button size='small' onClick={() => unban(id, true)}>{t('unbanAll')}</Button>
-        {record.user && <Button size='small' onClick={() => unban(id, false)}>{t('unbanUser')}</Button>}
+        {!record.onlyCharacterIsBanned && <Button size='small' onClick={() => unban(id, false)}>{t('unbanUser')}</Button>}
       </Flex>,
     },
   ];

@@ -51,7 +51,7 @@ const CrimesPage = () => {
   const remove = (id: string) => {
     setLoading(true);
     api.removeCrime(id)
-      .then(res => {
+      .then(() => {
         getCrimes();
         notification.alert('success', t('recordRemoved'));
       })
@@ -68,7 +68,7 @@ const CrimesPage = () => {
   const handleModalOk = () => {
     setLoading(true);
     api.saveCrime(record!)
-      .then(res => {
+      .then(() => {
         getCrimes();
         notification.alert('success', t('recordSaved'));
       })

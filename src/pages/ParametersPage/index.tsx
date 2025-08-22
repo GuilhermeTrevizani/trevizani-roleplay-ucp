@@ -74,8 +74,6 @@ const ParametersPage = () => {
     hospitalValue: 0,
     initialTimeCrackDen: 0,
     ipLsJSON: '[]',
-    keyValue: 0,
-    lockValue: 0,
     maxCharactersOnline: 0,
     paycheck: 0,
     policeOfficersPropertyRobbery: 0,
@@ -110,6 +108,9 @@ const ParametersPage = () => {
     unemploymentAssistance: 0,
     premiumPointPackagesJSON: '[]',
     motd: '',
+    entranceBenefitValue: 0,
+    entranceBenefitCooldownUsers: 0,
+    entranceBenefitCooldownHours: 0,
   });
   const [loading, setLoading] = useState(true);
   const [ipls, setIpls] = useState<string[]>([]);
@@ -611,23 +612,13 @@ const ParametersPage = () => {
               <InputNumber value={parameter.extraPaymentGarbagemanValue} onChange={(value) => setParameter({ ...parameter, extraPaymentGarbagemanValue: value ?? 0 })} style={inputStyle} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={20} lg={3}>
-            <Form.Item label={t('keyValue')}>
-              <InputNumber value={parameter.keyValue} onChange={(value) => setParameter({ ...parameter, keyValue: value ?? 0 })} style={inputStyle} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col xs={24} md={10} lg={4}>
-            <Form.Item label={t('lockValue')}>
-              <InputNumber value={parameter.lockValue} onChange={(value) => setParameter({ ...parameter, lockValue: value ?? 0 })} style={inputStyle} />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={10} lg={4}>
+          <Col xs={24} md={10} lg={3}>
             <Form.Item label={t('tattooValue')}>
               <InputNumber value={parameter.tattooValue} onChange={(value) => setParameter({ ...parameter, tattooValue: value ?? 0 })} style={inputStyle} />
             </Form.Item>
           </Col>
+        </Row>
+        <Row gutter={16}>
           <Col xs={24} md={10} lg={6}>
             <Form.Item label={t('initialTimeCrackDen')}>
               <InputNumber value={parameter.initialTimeCrackDen} onChange={(value) => setParameter({ ...parameter, initialTimeCrackDen: value ?? 0 })} style={inputStyle} />
@@ -643,14 +634,14 @@ const ParametersPage = () => {
               <InputNumber value={parameter.plasticSurgeryValue} onChange={(value) => setParameter({ ...parameter, plasticSurgeryValue: value ?? 0 })} style={inputStyle} />
             </Form.Item>
           </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col xs={24} md={10} lg={5}>
+          <Col xs={24} md={10} lg={8}>
             <Form.Item label={t('firefightersBlockHeal')}>
               <InputNumber value={parameter.firefightersBlockHeal} onChange={(value) => setParameter({ ...parameter, firefightersBlockHeal: value ?? 0 })} style={inputStyle} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={10} lg={5}>
+        </Row>
+        <Row gutter={16}>
+          <Col xs={24} md={10} lg={7}>
             <Form.Item label={t('propertyProtectionLevelPercentageValue')}>
               <InputNumber value={parameter.propertyProtectionLevelPercentageValue} onChange={(value) => setParameter({ ...parameter, propertyProtectionLevelPercentageValue: value ?? 0 })} style={inputStyle} />
             </Form.Item>
@@ -660,12 +651,12 @@ const ParametersPage = () => {
               <InputNumber value={parameter.vehicleInsurancePercentage} onChange={(value) => setParameter({ ...parameter, vehicleInsurancePercentage: value ?? 0 })} style={inputStyle} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={10} lg={5}>
+          <Col xs={24} md={10} lg={7}>
             <Form.Item label={t('whoCanLogin')}>
               <Select options={whoCanLogin} value={parameter.whoCanLogin} onChange={(value) => setParameter({ ...parameter, whoCanLogin: Number(value) })} style={inputStyle} />
             </Form.Item>
           </Col>
-          <Col xs={24} md={20} lg={4}>
+          <Col xs={24} md={10} lg={5}>
             <Form.Item label={t('unemploymentAssistance')}>
               <InputNumber value={parameter.unemploymentAssistance} onChange={(value) => setParameter({ ...parameter, unemploymentAssistance: value ?? 0 })} style={inputStyle} />
             </Form.Item>
@@ -1094,6 +1085,30 @@ const ParametersPage = () => {
           loading={loading}
         />
       </Form>
+    },
+    {
+      key: t('entranceBenefit'),
+      label: t('entranceBenefit'),
+      children:
+        <Form layout='vertical'>
+          <Row gutter={16}>
+            <Col xs={24} md={10} lg={8}>
+              <Form.Item label={t('entranceBenefitValue')}>
+                <InputNumber value={parameter.entranceBenefitValue} onChange={(value) => setParameter({ ...parameter, entranceBenefitValue: value ?? 0 })} style={inputStyle} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={10} lg={8}>
+              <Form.Item label={t('entranceBenefitCooldownUsers')}>
+                <InputNumber value={parameter.entranceBenefitCooldownUsers} onChange={(value) => setParameter({ ...parameter, entranceBenefitCooldownUsers: value ?? 0 })} style={inputStyle} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={10} lg={8}>
+              <Form.Item label={t('entranceBenefitCooldownHours')}>
+                <InputNumber value={parameter.entranceBenefitCooldownHours} onChange={(value) => setParameter({ ...parameter, entranceBenefitCooldownHours: value ?? 0 })} style={inputStyle} />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>,
     },
   ];
 

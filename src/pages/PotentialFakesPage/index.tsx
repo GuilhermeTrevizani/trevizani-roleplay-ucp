@@ -36,6 +36,11 @@ const PotentialFakesPage = () => {
 
   const columns: ColumnsType<PotentialFakeResponse> = [
     {
+      title: t('identifier'),
+      dataIndex: 'identifier',
+      key: 'identifier',
+    },
+    {
       title: t('users'),
       dataIndex: 'users',
       key: 'users',
