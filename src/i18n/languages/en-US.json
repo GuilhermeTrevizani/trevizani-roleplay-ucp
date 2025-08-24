@@ -279,7 +279,6 @@
   "rank": "Rank",
   "color": "Color",
   "chatColor": "Chat Color",
-  "badge": "Badge",
   "averageServiceDay": "Average Service Per Day",
   "averageServiceDayTip": "Average time on duty per day in the last 2 weeks.",
   "salary": "Salary",

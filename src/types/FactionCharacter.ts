@@ -6,7 +6,6 @@ export default interface FactionCharacter {
   name: string;
   user: string;
   lastAccessDate: Date;
-  badge: number;
   isOnline: boolean;
   flagsJson: string;
   averageMinutesOnDutyLastTwoWeeks: number;

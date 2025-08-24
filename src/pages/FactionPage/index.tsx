@@ -52,7 +52,6 @@ const FactionPage = () => {
   const [memberId, setMemberId] = useState('');
   const [memberRank, setMemberRank] = useState('');
   const [memberFlags, setMemberFlags] = useState<FactionFlag[]>([]);
-  const [memberBadge, setMemberBadge] = useState(0);
 
   const [originalVehicles, setOriginalVehicles] = useState<FactionVehicle[]>([]);
   const [vehicles, setVehicles] = useState<FactionVehicle[]>([]);
@@ -117,7 +116,6 @@ const FactionPage = () => {
     setMemberModal(true);
     setMemberId(member.id);
     setMemberRank(member.rankId);
-    setMemberBadge(member.badge);
     setMemberFlags(JSON.parse(member.flagsJson));
   };
 
@@ -138,7 +136,7 @@ const FactionPage = () => {
 
   const confirmMemberModal = () => {
     setLoading(true);
-    api.saveFactionMember({ factionId: id!, id: memberId, badge: memberBadge, factionRankId: memberRank, flags: memberFlags })
+    api.saveFactionMember({ factionId: id!, id: memberId, factionRankId: memberRank, flags: memberFlags })
       .then(() => {
         notification.alert('success', t('recordSaved'));
         getInfo();
@@ -155,7 +153,6 @@ const FactionPage = () => {
     setMemberModal(false);
     setMemberId('');
     setMemberRank('');
-    setMemberBadge(0);
     setMemberFlags([]);
   };
 
@@ -266,12 +263,6 @@ const FactionPage = () => {
       dataIndex: 'lastAccessDate',
       key: 'lastAccessDate',
       render: (lastAccessDate: Date) => formatDateTime(lastAccessDate),
-    },
-    {
-      title: t('badge'),
-      dataIndex: 'badge',
-      key: 'badge',
-      hidden: !hasDuty,
     },
     {
       title: t('averageServiceDay'),
@@ -565,13 +556,6 @@ const FactionPage = () => {
                   onChange={(value) => setMemberRank(value)} />
               </Form.Item>
             </Col>
-          </Row>
-          <Row gutter={16}>
-            {hasDuty && <Col span={24}>
-              <Form.Item label={t('badge')}>
-                <InputNumber value={memberBadge} onChange={(value) => setMemberBadge(value!)} />
-              </Form.Item>
-            </Col>}
           </Row>
           <Row gutter={16}>
             <Col span={24}>
