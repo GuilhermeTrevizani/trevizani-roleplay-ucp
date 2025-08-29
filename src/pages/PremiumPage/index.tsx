@@ -131,13 +131,6 @@ const PremiumPage = () => {
       gold: `5 ${t('minutes').toLowerCase()}`,
     },
     {
-      feature: t('infomarkerDuration'),
-      normal: `${t('until')} 3 ${t('days').toLowerCase()}`,
-      bronze: `${t('until')} 7 ${t('days').toLowerCase()}`,
-      silver: `${t('until')} 15 ${t('days').toLowerCase()}`,
-      gold: `${t('until')} 30 ${t('days').toLowerCase()}`,
-    },
-    {
       feature: t('infomarkerQuantity'),
       normal: '1',
       bronze: '3',
@@ -206,13 +199,6 @@ const PremiumPage = () => {
       bronze: t('yes'),
       silver: t('yes'),
       gold: t('yes'),
-    },
-    {
-      feature: t('graffitiDuration'),
-      normal: `5 ${t('days').toLowerCase()}`,
-      bronze: `7 ${t('days').toLowerCase()}`,
-      silver: `14 ${t('days').toLowerCase()}`,
-      gold: `21 ${t('days').toLowerCase()}`,
     },
     {
       feature: t('graffitiQuantity'),
